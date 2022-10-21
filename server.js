@@ -11,4 +11,9 @@ app.get('/', (req, res) => {
   res.send({ msg: 'This route is being hit!' })
 })
 
+app.post('/books', async (req, res) => {
+  let newBook = await Book.create(req.body)
+  res.send(newBook)
+})
+
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
