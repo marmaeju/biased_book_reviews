@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
-
-let MONGODB_URI =
-  'mongodb+srv://marmaeju:butterfly1@generalassemblycluster.ivskyjp.mongodb.net/biasedReviewsDatabase'
+require('dotenv').config()
 
 mongoose
   .connect(MONGODB_URI)
