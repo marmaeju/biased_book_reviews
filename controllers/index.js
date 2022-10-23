@@ -13,6 +13,19 @@ const createBook = async (req, res) => {
   }
 }
 
+const createReview = async (req, res) => {
+  try {
+    const newReview = await new Review(req.body)
+    await newReview.save()
+    return res.status(201).json({
+      newReview
+    })
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
 module.exports = {
-  createBook
+  createBook,
+  createReview
 }
