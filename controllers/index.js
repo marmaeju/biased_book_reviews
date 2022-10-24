@@ -13,6 +13,28 @@ const createBook = async (req, res) => {
   }
 }
 
+const getAllBooks = async (req, res) => {
+  try {
+    const allBooks = await new Book.find({})
+    return res.status(200).json({ allBooks })
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
+const getBookById = async (req, res) => {
+  try {
+    const { id } = req.params
+    const bookId = await Book.findById(id)
+    if (bookId) {
+      return res.status(200).json({ bookId })
+    }
+    return res.status(404).send('Book with the specified ID does not exists')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 const createReview = async (req, res) => {
   try {
     const newReview = await new Review(req.body)
@@ -27,5 +49,6 @@ const createReview = async (req, res) => {
 
 module.exports = {
   createBook,
-  createReview
+  createReview,
+  getAllBooks
 }

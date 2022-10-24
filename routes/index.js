@@ -8,4 +8,8 @@ router.get('/', (req, res) => {
 
 router.post('/books', controllers.createBook)
 
+router.get('/books', controllers.getAllBooks)
+
+router.post('/reviews', controllers.createReview)
+
 module.exports = router
