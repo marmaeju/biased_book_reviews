@@ -1,5 +1,4 @@
-const Book = require('../models/book')
-const Review = require('../models/review')
+const { Book, Review } = require('../models')
 
 const createBook = async (req, res) => {
   try {
@@ -15,7 +14,7 @@ const createBook = async (req, res) => {
 
 const getAllBooks = async (req, res) => {
   try {
-    const allBooks = await new Book.find({})
+    const allBooks = await Book.find({})
     return res.status(200).json({ allBooks })
   } catch (error) {
     return res.status(500).send(error.message)
@@ -23,6 +22,7 @@ const getAllBooks = async (req, res) => {
 }
 
 const getBookById = async (req, res) => {
+  console.log(req.params)
   try {
     const { id } = req.params
     const bookId = await Book.findById(id)
@@ -47,8 +47,33 @@ const createReview = async (req, res) => {
   }
 }
 
+const getAllReviews = async (req, res) => {
+  try {
+    const allReviews = await Review.find()
+    return res.status(200).json({ allReviews })
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
+const getReviewById = async (req, res) => {
+  try {
+    const { id } = req.params
+    const review = await Review.findById(id)
+    if (plant) {
+      return res.status(200).json({ review })
+    }
+    return res.status(404).send('Review with the specified ID does not exists')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 module.exports = {
   createBook,
+  getAllBooks,
+  getBookById,
   createReview,
-  getAllBooks
+  getAllReviews,
+  getReviewById
 }

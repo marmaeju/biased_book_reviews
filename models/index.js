@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const reviewSchema = require('./book')
+const reviewSchema = require('./review')
 const bookSchema = require('./book')
 
 const Review = mongoose.model('Review', reviewSchema)
