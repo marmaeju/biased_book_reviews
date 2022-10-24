@@ -35,6 +35,17 @@ const getBookById = async (req, res) => {
   }
 }
 
+const updateBook = async (req, res) => {
+  try {
+    const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    })
+    res.status(200).json(updatedBook)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 const createReview = async (req, res) => {
   try {
     const newReview = await new Review(req.body)
@@ -69,11 +80,26 @@ const getReviewById = async (req, res) => {
   }
 }
 
+const updateReview = async (req, res) => {
+  try {
+    const updatedReview = await Review.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    )
+    res.status(200).json(updatedReview)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 module.exports = {
   createBook,
   getAllBooks,
   getBookById,
+  updateBook,
   createReview,
   getAllReviews,
-  getReviewById
+  getReviewById,
+  updateReview
 }

@@ -12,10 +12,14 @@ router.get('/books', controllers.getAllBooks)
 
 router.get('/books/:id', controllers.getBookById)
 
+router.put('/books/:id', controllers.updateBook)
+
 router.post('/reviews', controllers.createReview)
 
 router.get('/reviews', controllers.getAllReviews)
 
 router.get('/reviews/:id', controllers.getReviewById)
+
+router.put('/reviews/:id', controllers.updateReview)
 
 module.exports = router
