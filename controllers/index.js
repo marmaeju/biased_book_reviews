@@ -46,6 +46,19 @@ const updateBook = async (req, res) => {
   }
 }
 
+const deleteBook = async (req, res) => {
+  try {
+    const { id } = req.params
+    const deletedBook = await Book.findByIdAndDelete(id)
+    if (deletedBook) {
+      return res.status(200).send('Book deleted')
+    }
+    throw new Error('Book not found')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 const createReview = async (req, res) => {
   try {
     const newReview = await new Review(req.body)
@@ -71,7 +84,7 @@ const getReviewById = async (req, res) => {
   try {
     const { id } = req.params
     const review = await Review.findById(id)
-    if (plant) {
+    if (review) {
       return res.status(200).json({ review })
     }
     return res.status(404).send('Review with the specified ID does not exists')
@@ -93,13 +106,28 @@ const updateReview = async (req, res) => {
   }
 }
 
+const deleteReview = async (req, res) => {
+  try {
+    const { id } = req.params
+    const deletedReview = await Review.findByIdAndDelete(id)
+    if (deletedReview) {
+      return res.status(200).send('Review deleted')
+    }
+    throw new Error('Review not found')
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
+
 module.exports = {
   createBook,
   getAllBooks,
   getBookById,
   updateBook,
+  deleteBook,
   createReview,
   getAllReviews,
   getReviewById,
-  updateReview
+  updateReview,
+  deleteReview
 }
