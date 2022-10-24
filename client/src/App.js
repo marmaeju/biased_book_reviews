@@ -1,6 +1,10 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Routes, Route } from 'react-router-dom'
+import Home from './components/Home'
+import Nav from './components/Nav'
+import About from './components/About'
 
 function App() {
   const [books, updateBooks] = useState([])
@@ -15,7 +19,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Biased Book Reviews</h1>
+      <header>
+        <Nav />
+      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
       {books.map((book) => (
         <div>
           <h2>{book.title}</h2>
