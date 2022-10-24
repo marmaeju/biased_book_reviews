@@ -22,9 +22,12 @@ function App() {
       <header>
         <Nav />
       </header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </main>
       {books.map((book) => (
         <div>
           <h2>{book.title}</h2>
