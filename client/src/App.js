@@ -9,6 +9,7 @@ import BookDetails from './components/BookDetails'
 
 function App() {
   const [books, updateBooks] = useState([])
+  const [newBookAdded, toggleNewBookAdded] = useState(false)
 
   useEffect(() => {
     const apiCall = async () => {
@@ -16,7 +17,7 @@ function App() {
       updateBooks(response.data.allBooks)
     }
     apiCall()
-  }, [])
+  }, [newBookAdded])
 
   return (
     <div className="App">
@@ -25,9 +26,18 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home books={books} />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                books={books}
+                toggleNewBookAdded={toggleNewBookAdded}
+                newBookAdded={newBookAdded}
+              />
+            }
+          />
           <Route path="/about" element={<About />} />
-          <Route path="/_id:" element={<BookDetails books={books} />} />
+          <Route path="/books/:id" element={<BookDetails books={books} />} />
         </Routes>
       </main>
     </div>

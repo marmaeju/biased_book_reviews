@@ -1,17 +1,20 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const BookDetails = (props) => {
 
   const [book, setBook] = useState('')
-  let {_id} = useParams()
+  let {id} = useParams()
 
   useEffect(() => {
-    let selectedBook = props.books.find(
-      (book) = book._id === parseInt(_id)
-    )
-    setBook(selectedBook)
-  }, [props.books, _id])
+    const bookID = async () => {
+      let selectedBook = await axios.get(`http://localhost:3001/books/${id}`)
+      console.log(selectedBook)
+      setBook(selectedBook.data.bookId)
+    }
+    bookID()
+  }, [props.books, id])
 
   return book ? (
     <div>
@@ -22,7 +25,7 @@ const BookDetails = (props) => {
       <div>
         <h3>Description</h3>
         <p>{book.description}</p>
-        <h4>Author: ${book.author}</h4>
+        <h4>Author: {book.author}</h4>
       </div>
     </div>
   ) : null;
