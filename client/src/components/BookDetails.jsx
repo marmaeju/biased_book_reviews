@@ -7,9 +7,6 @@ const BookDetails = (props) => {
   const [book, setBook] = useState('')
   let {id} = useParams()
 
-  const [reviews, updatereviews] = useState([])
-  const [formState, setFormState] = useState({ title: "", body: "", name: ""})
-
   useEffect(() => {
     const bookID = async () => {
       let selectedBook = await axios.get(`http://localhost:3001/books/${id}`)
@@ -30,7 +27,7 @@ const BookDetails = (props) => {
         <h4>Author: {book.author}</h4>
       </div>
       <div>
-        <h3>Want to give a review? Fill out the form below!</h3>
+        <h4>Want to add your own review? Fill out the form below!</h4>
       </div>
     </div>
   ) : null;
