@@ -10,6 +10,11 @@ const Home = (props) => {
   const showBook = (book) => {
     navigate(`${book._id}`)
   }
+
+  const handleChange = (event) => {
+    setFormState({...formState, [event.target.id]: event.target.value})
+  }
+
   return (
     <div>
       {props.books.map((book) => (
@@ -22,13 +27,13 @@ const Home = (props) => {
       <h3>Don't see the book you want? Create it in the form below!</h3>
       <form>
         <label htmlFor='title'>Title:</label>
-        <input id='title' value={formState.title}/>
+        <input id='title' value={formState.title} onChange={handleChange} />
         <label htmlFor='author'>Author:</label>
-        <input id='author' value={formState.author}/>
+        <input id='author' value={formState.author} onChange={handleChange}/>
         <label htmlFor='description'>Description:</label>
-        <input id='description' value={formState.description}/>
+        <input id='description' value={formState.description} onChange={handleChange}/>
         <label htmlFor='image'>Image URL:</label>
-        <input id='image' value={formState.image}/>
+        <input id='image' value={formState.image} onChange={handleChange}/>
         <button type='submit'>Add Book!</button>
       </form>
 
