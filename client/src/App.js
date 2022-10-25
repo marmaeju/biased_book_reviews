@@ -7,15 +7,15 @@ import Nav from './components/Nav'
 import About from './components/About'
 
 function App() {
-  const [books, updateBooks] = useState([])
+  // const [books, updateBooks] = useState([])
 
-  useEffect(() => {
-    const apiCall = async () => {
-      let response = await axios.get('http://localhost:3001/books')
-      updateBooks(response.data.allBooks)
-    }
-    apiCall()
-  }, [])
+  // useEffect(() => {
+  //   const apiCall = async () => {
+  //     let response = await axios.get('http://localhost:3001/books')
+  //     updateBooks(response.data.allBooks)
+  //   }
+  //   apiCall()
+  // }, [])
 
   return (
     <div className="App">
@@ -28,11 +28,11 @@ function App() {
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
-      {books.map((book) => (
+      {/* {books.map((book) => (
         <div>
           <h2>{book.title}</h2>
         </div>
-      ))}
+      ))} */}
     </div>
   )
 }
