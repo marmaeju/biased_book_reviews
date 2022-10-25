@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
   const [books, updateBooks] = useState([])
@@ -11,11 +11,18 @@ const Home = () => {
     }
     apiCall()
   }, [])
+
+  let navigate = useNavigate()
+
+  const showBook = (book) => {
+    navigate(`${book.id}`)
+  }
   return (
     <div>
       {books.map((book) => (
-        <div>
-          <h2>{book.title}</h2>
+        <div onClick={() => showBook(book)} key={book.id}>
+          <h3>{book.title}</h3>
+          <img src={book.image}/>
        </div>
       ))}
     </div>

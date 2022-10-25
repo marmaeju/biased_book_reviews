@@ -1,11 +1,11 @@
 import {Link} from 'react-router-dom' 
 
-const Nav = (props) => {
+const Nav = () => {
   
   return (
     <header>
       <nav className="navbar">
-        <h4>Biased Book Reviews</h4>
+        <h2>Biased Book Reviews</h2>
         <Link to='/'>Home</Link>
         <Link to="/about">About</Link>
       </nav>
