@@ -5,17 +5,18 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import About from './components/About'
+import BookDetails from './components/BookDetails'
 
 function App() {
-  // const [books, updateBooks] = useState([])
+  const [books, updateBooks] = useState([])
 
-  // useEffect(() => {
-  //   const apiCall = async () => {
-  //     let response = await axios.get('http://localhost:3001/books')
-  //     updateBooks(response.data.allBooks)
-  //   }
-  //   apiCall()
-  // }, [])
+  useEffect(() => {
+    const apiCall = async () => {
+      let response = await axios.get('http://localhost:3001/books')
+      updateBooks(response.data.allBooks)
+    }
+    apiCall()
+  }, [])
 
   return (
     <div className="App">
@@ -24,15 +25,11 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home books={books} />} />
           <Route path="/about" element={<About />} />
+          <Route path="/_id:" element={<BookDetails books={books} />} />
         </Routes>
       </main>
-      {/* {books.map((book) => (
-        <div>
-          <h2>{book.title}</h2>
-        </div>
-      ))} */}
     </div>
   )
 }
