@@ -34,7 +34,7 @@ const Home = (props) => {
   return (
     <div>
       <div className='books-title'>
-        <h1>Books</h1>
+        <h1> Books </h1>
       </div>
       <div className='book-grid'>
         {props.books.map((book) => (
