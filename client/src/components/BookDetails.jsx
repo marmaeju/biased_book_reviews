@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const BookDetails = (props) => {
-
+  // const [formState, setFormState] = useState({ title: "", body: "", name: ""})
   const [book, setBook] = useState({})
   let {id} = useParams()
+
+  // const handleChange = (event) => {
+  //   setFormState({...formState, [event.target.id]: event.target.value})
+  // }
 
   useEffect(() => {
     const getBook = async () => {
@@ -35,7 +39,7 @@ const BookDetails = (props) => {
         )): "" }
       </div>
       <div>
-      <div className='review-form'>
+      {/* <div className='review-form'>
         <h2>Want to add your own review? Create it in the form below!</h2>
         <div>
           <form onSubmit={handleSubmit}>
@@ -48,7 +52,7 @@ const BookDetails = (props) => {
             <button type='submit'>Add Review!</button>
           </form>
         </div>
-      </div>
+      </div> */}
       </div>
     </div>
   )
