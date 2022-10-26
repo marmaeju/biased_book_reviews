@@ -39,7 +39,7 @@
 .book-card {
   padding: 1em;
   width: 18em;
-  height: 23em;
+  height: 24em;
   background-color: lightblue;
   border-radius: 0.5em;
   margin: 2em;
@@ -91,4 +91,12 @@ button {
   font-weight: bold;
   cursor: pointer;
   margin-top: 1em;
+}
+
+.aboutH1 {
+  margin: 5em;
+}
+
+.aboutP {
+  font-weight: bold;
 }

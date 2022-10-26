@@ -22,17 +22,16 @@ const getAllBooks = async (req, res) => {
 }
 
 const getBookById = async (req, res) => {
-  console.log(req.params)
-  try {
-    const { id } = req.params
-    const bookId = await Book.findById(id)
-    // if (bookId) {
-    return res.status(200).json({ bookId }).populate('reviews')
-    // }
-    // return res.status(404).send('Book with the specified ID does not exists')
-  } catch (error) {
-    return res.status(500).send(error.message)
-  }
+  // try {
+  const { id } = req.params
+  const book = await Book.findById(id).populate('reviews')
+  console.log('LINE 29: Inside tri-block')
+  res.status(200).json(book)
+
+  // } catch (error) {
+  //   console.log('LINE 34: Inside catch block')
+  //   return res.status(500).send(error.message)
+  // }
 }
 
 const updateBook = async (req, res) => {
