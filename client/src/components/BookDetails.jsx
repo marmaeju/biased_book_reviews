@@ -34,6 +34,22 @@ const BookDetails = (props) => {
           </div>
         )): "" }
       </div>
+      <div>
+      <div className='review-form'>
+        <h2>Want to add your own review? Create it in the form below!</h2>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor='title'>Review Title:</label>
+            <input id='title' value={formState.title} onChange={handleChange} />
+            <label htmlFor='body'>Review:</label>
+            <input id='body' value={formState.author} onChange={handleChange}/>
+            <label htmlFor='name'>Your Name</label>
+            <input id='name' value={formState.description} onChange={handleChange}/>
+            <button type='submit'>Add Review!</button>
+          </form>
+        </div>
+      </div>
+      </div>
     </div>
   )
 
