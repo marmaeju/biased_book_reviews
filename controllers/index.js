@@ -26,10 +26,10 @@ const getBookById = async (req, res) => {
   try {
     const { id } = req.params
     const bookId = await Book.findById(id)
-    if (bookId) {
-      return res.status(200).json({ bookId })
-    }
-    return res.status(404).send('Book with the specified ID does not exists')
+    // if (bookId) {
+    return res.status(200).json({ bookId }).populate('reviews')
+    // }
+    // return res.status(404).send('Book with the specified ID does not exists')
   } catch (error) {
     return res.status(500).send(error.message)
   }
