@@ -17,16 +17,15 @@ const BookDetails = (props) => {
 
   return (
     <div>
-      <div>
+      <div className="book-details">
         <h1>{book.title}</h1>
-        <h4>Author: {book.author}</h4>
+        <h4>{book.author}</h4>
         <img src={book.image}/>
-        <h4>Description: {book.description}</h4>
+        <h3 className="description">Description</h3>
+        <h4>{book.description}</h4>
+        <h3 className="reviews">Reviews</h3>
 
       </div>
-      
-      
-      
     </div>
   )
 

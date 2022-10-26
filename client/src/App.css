@@ -100,3 +100,13 @@ button {
 .aboutP {
   font-weight: bold;
 }
+
+.book-details {
+  margin: 2em;
+  margin-left: 30em;
+  margin-right: 30em;
+}
+
+.description, .reviews {
+  text-decoration: underline;
+}
