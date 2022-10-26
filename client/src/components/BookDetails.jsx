@@ -16,15 +16,23 @@ const BookDetails = (props) => {
   }, [props.books, id])
 
   return (
-    <div>
-      <div className="book-details">
+    <div className="book-details">
+      <div>
         <h1>{book.title}</h1>
         <h4>{book.author}</h4>
         <img src={book.image}/>
         <h3 className="description">Description</h3>
         <h4>{book.description}</h4>
-        <h3 className="reviews">Reviews</h3>
-
+      </div>
+      <div className="review">
+        <h3 className="reviews-title">Reviews</h3> 
+        {book?book.reviews.map((review) => (
+          <div>
+            <h4>{review.title}</h4>
+            {/* <h3>{review.body}</h3>
+            <h5>~{review.name}</h5> */}
+          </div>
+        )): "" }
       </div>
     </div>
   )

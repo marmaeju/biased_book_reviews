@@ -41,8 +41,8 @@ const Home = (props) => {
           <div className="book-card" onClick={() => showBook(book)} key={book._id}>
             <h3>{book.title}</h3>
             <img src={book.image}/>
-        </div>
-       ))}
+          </div>
+        ))}
       </div>
       <div className='book-form'>
         <h2>Don't see the book you want? Create it in the form below!</h2>
