@@ -33,25 +33,33 @@ const Home = (props) => {
 
   return (
     <div>
-      {props.books.map((book) => (
-        <div onClick={() => showBook(book)} key={book._id}>
-          <h3>{book.title}</h3>
-          <img src={book.image}/>
-       </div>
-      ))}
-
-      <h3>Don't see the book you want? Create it in the form below!</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor='title'>Title:</label>
-        <input id='title' value={formState.title} onChange={handleChange} />
-        <label htmlFor='author'>Author:</label>
-        <input id='author' value={formState.author} onChange={handleChange}/>
-        <label htmlFor='description'>Description:</label>
-        <input id='description' value={formState.description} onChange={handleChange}/>
-        <label htmlFor='image'>Image URL:</label>
-        <input id='image' value={formState.image} onChange={handleChange}/>
-        <button type='submit'>Add Book!</button>
-      </form>
+      <div className='books-title'>
+        <h1>Books</h1>
+      </div>
+      <div className='book-grid'>
+        {props.books.map((book) => (
+          <div className="book-card" onClick={() => showBook(book)} key={book._id}>
+            <h3>{book.title}</h3>
+            <img src={book.image}/>
+        </div>
+       ))}
+      </div>
+      <div className='book-form'>
+        <h2>Don't see the book you want? Create it in the form below!</h2>
+        <div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor='title'>Title:</label>
+          <input id='title' value={formState.title} onChange={handleChange} />
+          <label htmlFor='author'>Author:</label>
+          <input id='author' value={formState.author} onChange={handleChange}/>
+          <label htmlFor='description'>Description:</label>
+          <input id='description' value={formState.description} onChange={handleChange}/>
+          <label htmlFor='image'>Image URL:</label>
+          <input id='image' value={formState.image} onChange={handleChange}/>
+          <button type='submit'>Add Book!</button>
+        </form>
+        </div>
+      </div>
 
     </div>
     )

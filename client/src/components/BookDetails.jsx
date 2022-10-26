@@ -27,6 +27,9 @@ const BookDetails = (props) => {
         <h4>Author: {book.author}</h4>
       </div>
       <div>
+        <h3>Reviews: {book.reviews}</h3>
+      </div>
+      <div>
         <h4>Want to add your own review? Fill out the form below!</h4>
       </div>
     </div>
