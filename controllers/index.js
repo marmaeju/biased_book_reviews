@@ -55,6 +55,9 @@ const createReview = async (req, res) => {
   try {
     const newReview = await new Review(req.body)
     await newReview.save()
+    let updatedBook = await Book.findById(req.params.id)
+    updatedBook.reviews.push(newReview._id)
+    await updatedBook.save()
     return res.status(201).json({
       newReview
     })

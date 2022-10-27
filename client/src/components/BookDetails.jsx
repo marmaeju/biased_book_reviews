@@ -14,15 +14,14 @@ const BookDetails = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let newReview = await axios.post('http://localhost:3001/reviews', formState)
+    let newReview = await axios.post(`http://localhost:3001/reviews/${id}`, formState)
       .then((response) => {
         return response
       })
       .catch((error) => {
         console.log(error)
       })
-
-      setReviews([...reviews, newReview.data])
+      
       setFormState({ title: "", body: "", name: ""})
       props.toggleNewReviewAdded(!props.newReviewAdded)
   }
