@@ -21,9 +21,10 @@ const BookDetails = (props) => {
       .catch((error) => {
         console.log(error)
       })
-      
+      console.log(newReview.data.newReview)
+      setReviews([...reviews, newReview.data.newReview])
       setFormState({ title: "", body: "", name: ""})
-      props.toggleNewReviewAdded(!props.newReviewAdded)
+      // props.toggleNewReviewAdded(!props.newReviewAdded)
   }
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const BookDetails = (props) => {
       setReviews(response.data.reviews)
     }
     getBook()
-  }, [id])
+  }, [reviews,id])
 
   return (
     <div className="book-details">
@@ -62,9 +63,9 @@ const BookDetails = (props) => {
             <label htmlFor='title'>Review Title:</label>
             <input id='title' value={formState.title} onChange={handleChange} />
             <label htmlFor='body'>Review:</label>
-            <input id='body' value={formState.author} onChange={handleChange}/>
+            <input id='body' value={formState.body} onChange={handleChange}/>
             <label htmlFor='name'>Your Name</label>
-            <input id='name' value={formState.description} onChange={handleChange}/>
+            <input id='name' value={formState.name} onChange={handleChange}/>
             <button type='submit'>Add Review!</button>
           </form>
         </div>
