@@ -24,7 +24,7 @@ const BookDetails = (props) => {
 
       setReviews([...reviews, newReview.data])
       setFormState({ title: "", body: "", name: ""})
-      props.toggleNewBookAdded(!props.newBookAdded)
+      props.toggleNewReviewAdded(!props.newReviewAdded)
   }
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const BookDetails = (props) => {
       <div className='review-form'>
         <h2>Want to add your own review? Create it in the form below!</h2>
         <div>
-          <form >
+          <form onSubmit={handleSubmit}>
             <label htmlFor='title'>Review Title:</label>
             <input id='title' value={formState.title} onChange={handleChange} />
             <label htmlFor='body'>Review:</label>

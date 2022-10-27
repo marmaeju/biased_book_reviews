@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="navbar">
+      <header className="nav">
         <Nav />
       </header>
       <main>
@@ -37,7 +37,16 @@ function App() {
             }
           />
           <Route path="/about" element={<About />} />
-          <Route path="/books/:id" element={<BookDetails books={books} />} />
+          <Route
+            path="/books/:id"
+            element={
+              <BookDetails
+                books={books}
+                toggleNewReviewAdded={toggleNewBookAdded}
+                newReviewAdded={newBookAdded}
+              />
+            }
+          />
         </Routes>
       </main>
     </div>
