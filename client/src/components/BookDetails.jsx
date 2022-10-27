@@ -24,7 +24,6 @@ const BookDetails = (props) => {
       console.log(newReview.data.newReview)
       setReviews([...reviews, newReview.data.newReview])
       setFormState({ title: "", body: "", name: ""})
-      // props.toggleNewReviewAdded(!props.newReviewAdded)
   }
 
   useEffect(() => {
@@ -36,20 +35,24 @@ const BookDetails = (props) => {
     getBook()
   }, [reviews,id])
 
+  const deleteBook = async () => {
+    
+  }
+
   return (
     <div className="book-details">
       <div>
         <h1>{book.title}</h1>
         <h4>{book.author}</h4>
         <img src={book.image}/>
-        <h3 className="description">Description</h3>
+        <h2 className="description">Description</h2>
         <h4>{book.description}</h4>
       </div>
       <div className="review">
-        <h3 className="reviews-title">Reviews</h3> 
+        <h2 className="reviews-title">Reviews</h2> 
         {reviews ? reviews.map((review) => (
           <div>
-            <h4>{review.title}</h4>
+            <h3>{review.title}</h3>
             <h4>{review.body}</h4>
             <h5>~{review.name}</h5>
           </div>
@@ -57,7 +60,7 @@ const BookDetails = (props) => {
       </div>
       <div>
       <div className='review-form'>
-        <h2>Want to add your own review? Create it in the form below!</h2>
+        <h3>Want to add your own review? Create it in the form below!</h3>
         <div>
           <form onSubmit={handleSubmit}>
             <label htmlFor='title'>Review Title:</label>
@@ -68,6 +71,10 @@ const BookDetails = (props) => {
             <input id='name' value={formState.name} onChange={handleChange}/>
             <button type='submit'>Add Review!</button>
           </form>
+        </div>
+        <div>
+          <h3>Hate this book with a fiery passion and want to get rid of it? Delete it below!</h3>
+          <button>Delete this Book!</button>
         </div>
       </div>
       </div>
