@@ -3,40 +3,39 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const BookDetails = (props) => {
-  // const [formState, setFormState] = useState({ title: "", body: "", name: ""})
+  const [formState, setFormState] = useState({ title: "", body: "", name: ""})
   const [book, setBook] = useState({})
   const [reviews, setReviews] = useState([])
   let {id} = useParams()
 
-  // const handleChange = (event) => {
-  //   setFormState({...formState, [event.target.id]: event.target.value})
-  // }
+  const handleChange = (event) => {
+    setFormState({...formState, [event.target.id]: event.target.value})
+  }
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   let newBook = await axios.post('http://localhost:3001/books', formState)
-  //     .then((response) => {
-  //       return response
-  //     })
-  //     .catch((error) => {
-  //       console.log(error)
-  //     })
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    let newReview = await axios.post('http://localhost:3001/reviews', formState)
+      .then((response) => {
+        return response
+      })
+      .catch((error) => {
+        console.log(error)
+      })
 
-  //     updateBooks([...books, newBook.data])
-  //     setFormState({ title: "", author: "", description: "", image: ""})
-  //     props.toggleNewBookAdded(!props.newBookAdded)
-  // }
+      setReviews([...reviews, newReview.data])
+      setFormState({ title: "", body: "", name: ""})
+      props.toggleNewBookAdded(!props.newBookAdded)
+  }
 
   useEffect(() => {
     const getBook = async () => {
       let response = await axios.get(`http://localhost:3001/books/${id}`)
       setBook(response.data)
       setReviews(response.data.reviews)
-      console.log(book, "useEffect")
     }
     getBook()
   }, [id])
-console.log(book)
+
   return (
     <div className="book-details">
       <div>
@@ -57,10 +56,10 @@ console.log(book)
         )): "" }
       </div>
       <div>
-      {/* <div className='review-form'>
+      <div className='review-form'>
         <h2>Want to add your own review? Create it in the form below!</h2>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form >
             <label htmlFor='title'>Review Title:</label>
             <input id='title' value={formState.title} onChange={handleChange} />
             <label htmlFor='body'>Review:</label>
@@ -70,7 +69,7 @@ console.log(book)
             <button type='submit'>Add Review!</button>
           </form>
         </div>
-      </div> */}
+      </div>
       </div>
     </div>
   )
