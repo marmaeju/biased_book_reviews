@@ -3,11 +3,21 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Home = (props) => {
+  const [newBookAdded, toggleNewBookAdded] = useState(false)
+
   const [book, setBook] = useState({})
   const [books, updateBooks] = useState([])
   const [formState, setFormState] = useState({ title: "", author: "", description: "", image: ""})
 
   let navigate = useNavigate()
+
+  useEffect(() => {
+    const apiCall = async () => {
+      let response = await axios.get('http://localhost:3001/books')
+      updateBooks(response.data.allBooks)
+    }
+    apiCall()
+  }, [books])
 
   const showBook = (book) => {
     navigate(`books/${book._id}`)
@@ -29,7 +39,7 @@ const Home = (props) => {
 
       updateBooks([...books, newBook.data])
       setFormState({ title: "", author: "", description: "", image: ""})
-      props.toggleNewBookAdded(!props.newBookAdded)
+      // props.toggleNewBookAdded(!props.newBookAdded)
   }
 
   return (
