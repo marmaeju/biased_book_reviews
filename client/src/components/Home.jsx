@@ -47,7 +47,7 @@ const Home = (props) => {
       <div className='books-title'>
         <h1> Books </h1>
       </div>
-      <div className='book-grid'>
+      <div className='book-grid' key={books._id}>
         {books.map((book) => (
           <div className="book-card" onClick={() => showBook(book)} key={book._id}>
             <h3>{book.title}</h3>
