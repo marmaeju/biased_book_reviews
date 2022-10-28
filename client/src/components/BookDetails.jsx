@@ -25,6 +25,7 @@ const BookDetails = () => {
       .catch((error) => {
         console.log(error)
       })
+      console.log(reviews.data)
       setReviews([...reviews, newReview.data.newReview])
       setFormState({ title: "", body: "", name: ""})
   }
@@ -48,7 +49,8 @@ const BookDetails = () => {
   const handleUpdate = async (event) => {
     event.preventDefault()
     let response = await axios.put(`http://localhost:3001/books/${id}`, formState)
-    setBook([book, response])
+    console.log(response.data)
+    setBook([book, response.data])
     setFormState({title: "", author: "", description: "", image: ""})
   }
 

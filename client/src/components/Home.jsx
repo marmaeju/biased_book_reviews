@@ -36,8 +36,7 @@ const Home = (props) => {
       .catch((error) => {
         console.log(error)
       })
-
-      updateBooks([...books, newBook.data])
+      updateBooks([...books, newBook.data.newBook])
       setFormState({ title: "", author: "", description: "", image: ""})
       // props.toggleNewBookAdded(!props.newBookAdded)
   }
