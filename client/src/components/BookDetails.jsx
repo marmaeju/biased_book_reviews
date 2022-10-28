@@ -37,7 +37,15 @@ const BookDetails = (props) => {
   const deleteBook = async (event) => {
     event.preventDefault()
     let response = await axios.delete(`http://localhost:3001/books/${id}`, formState)
+    console.log(response)
     setBook(response)
+  }
+
+  const handleUpdate = async (event) => {
+    event.preventDefault()
+    let response = await axios.put(`http://localhost:3001/books/${id}`, formState)
+    setBook([book, response])
+    setFormState({title: "", author: "", description: "", image: ""})
   }
 
   return (
@@ -72,6 +80,20 @@ const BookDetails = (props) => {
             <input id='name' value={formState.name} onChange={handleChange}/>
             <button type='submit'>Add Review!</button>
           </form>
+        </div>
+        <h3>Want to Update the Book? Do it Below!</h3>
+        <div>
+        <form onSubmit={handleUpdate}>
+          <label htmlFor='title'>Title:</label>
+          <input id='title' value={formState.title} onChange={handleChange} />
+          <label htmlFor='author'>Author:</label>
+          <input id='author' value={formState.author} onChange={handleChange}/>
+          <label htmlFor='description'>Description:</label>
+          <input id='description' value={formState.description} onChange={handleChange}/>
+          <label htmlFor='image'>Image URL:</label>
+          <input id='image' value={formState.image} onChange={handleChange}/>
+          <button type='submit'>Update Book!</button>
+        </form>
         </div>
         <div>
           <h3>Hate this book with a fiery passion and want to get rid of it? Delete it below!</h3>
