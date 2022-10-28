@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const BookDetails = (props) => {
-  const [formState, setFormState] = useState({ title: "", body: "", name: ""})
+const BookDetails = () => {
+  const [formState, setFormState] = useState({ title: "", titulo: "", author: "", description: "", body: "", name: ""})
   const [book, setBook] = useState({})
   const [reviews, setReviews] = useState([])
   let {id} = useParams()
@@ -60,7 +60,7 @@ const BookDetails = (props) => {
       <div className="review">
         <h2 className="reviews-title">Reviews</h2> 
         {reviews ? reviews.map((review) => (
-          <div>
+          <div key={review._id}>
             <h3>{review.title}</h3>
             <h4>{review.body}</h4>
             <h5>~{review.name}</h5>
@@ -72,8 +72,8 @@ const BookDetails = (props) => {
         <h3>Want to add your own review? Create it in the form below!</h3>
         <div>
           <form onSubmit={handleSubmit}>
-            <label htmlFor='title'>Review Title:</label>
-            <input id='title' value={formState.title} onChange={handleChange} />
+            <label htmlFor='titulo'>Review Title:</label>
+            <input id='titulo' value={formState.titulo} onChange={handleChange} />
             <label htmlFor='body'>Review:</label>
             <input id='body' value={formState.body} onChange={handleChange}/>
             <label htmlFor='name'>Your Name</label>
