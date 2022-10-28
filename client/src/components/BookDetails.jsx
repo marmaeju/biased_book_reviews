@@ -21,7 +21,6 @@ const BookDetails = (props) => {
       .catch((error) => {
         console.log(error)
       })
-      console.log(newReview.data.newReview)
       setReviews([...reviews, newReview.data.newReview])
       setFormState({ title: "", body: "", name: ""})
   }
@@ -35,8 +34,10 @@ const BookDetails = (props) => {
     getBook()
   }, [reviews,id])
 
-  const deleteBook = async () => {
-    
+  const deleteBook = async (event) => {
+    event.preventDefault()
+    let response = await axios.delete(`http://localhost:3001/books/${id}`, formState)
+    setBook(response)
   }
 
   return (
@@ -74,7 +75,7 @@ const BookDetails = (props) => {
         </div>
         <div>
           <h3>Hate this book with a fiery passion and want to get rid of it? Delete it below!</h3>
-          <button>Delete this Book!</button>
+          <button className="deleteButton" onClick={deleteBook}>Delete this Book!</button>
         </div>
       </div>
       </div>
