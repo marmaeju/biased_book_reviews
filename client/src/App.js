@@ -8,16 +8,16 @@ import About from './components/About'
 import BookDetails from './components/BookDetails'
 
 function App() {
-  const [books, updateBooks] = useState([])
-  const [newBookAdded, toggleNewBookAdded] = useState(false)
+  // const [books, updateBooks] = useState([])
+  // const [newBookAdded, toggleNewBookAdded] = useState(false)
 
-  useEffect(() => {
-    const apiCall = async () => {
-      let response = await axios.get('http://localhost:3001/books')
-      updateBooks(response.data.allBooks)
-    }
-    apiCall()
-  }, [newBookAdded])
+  // useEffect(() => {
+  //   const apiCall = async () => {
+  //     let response = await axios.get('http://localhost:3001/books')
+  //     updateBooks(response.data.allBooks)
+  //   }
+  //   apiCall()
+  // }, [newBookAdded])
 
   return (
     <div className="App">
@@ -30,9 +30,9 @@ function App() {
             path="/"
             element={
               <Home
-                books={books}
-                toggleNewBookAdded={toggleNewBookAdded}
-                newBookAdded={newBookAdded}
+              // books={books}
+              // toggleNewBookAdded={toggleNewBookAdded}
+              // newBookAdded={newBookAdded}
               />
             }
           />
@@ -41,9 +41,9 @@ function App() {
             path="/books/:id"
             element={
               <BookDetails
-                books={books}
-                toggleNewReviewAdded={toggleNewBookAdded}
-                newReviewAdded={newBookAdded}
+              // books={books}
+              // toggleNewReviewAdded={toggleNewBookAdded}
+              // newReviewAdded={newBookAdded}
               />
             }
           />

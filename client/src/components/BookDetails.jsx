@@ -36,12 +36,11 @@ const BookDetails = () => {
       setReviews(response.data.reviews)
     }
     getBook()
-  }, [reviews,id])
+  }, [])
 
   const deleteBook = async (event) => {
     event.preventDefault()
     let response = await axios.delete(`http://localhost:3001/books/${id}`, formState)
-    console.log(response)
     setBook(response)
     navigate(`/`)
   }
