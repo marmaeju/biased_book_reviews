@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const BookDetails = () => {
-  const [formState, setFormState] = useState({ title: "", titulo: "", author: "", description: "", body: "", name: ""})
+  const [formState, setFormState] = useState({ title: "", titulo: "", author: "", description: "", body: "", name: "", image: ""})
   const [book, setBook] = useState({})
   const [reviews, setReviews] = useState([])
   let {id} = useParams()
