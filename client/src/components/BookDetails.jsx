@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BookDetails = () => {
   const [formState, setFormState] = useState({ title: "", titulo: "", author: "", description: "", body: "", name: "", image: ""})
   const [book, setBook] = useState({})
   const [reviews, setReviews] = useState([])
+
   let {id} = useParams()
+  let navigate = useNavigate()
+
 
   const handleChange = (event) => {
     setFormState({...formState, [event.target.id]: event.target.value})
@@ -39,6 +43,7 @@ const BookDetails = () => {
     let response = await axios.delete(`http://localhost:3001/books/${id}`, formState)
     console.log(response)
     setBook(response)
+    navigate(`/`)
   }
 
   const handleUpdate = async (event) => {
