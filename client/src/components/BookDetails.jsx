@@ -18,16 +18,30 @@ const BookDetails = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let newReview = await axios.post(`http://localhost:3001/reviews/${id}`, formState)
+    let response = await axios.post(`http://localhost:3001/reviews/${id}`, formState)
       .then((response) => {
         return response
       })
       .catch((error) => {
         console.log(error)
       })
-      console.log(reviews.data)
-      setReviews([...reviews, newReview.data.newReview])
+      console.log(response)
+      setReviews([...reviews, response.data.newReview])
       setFormState({ title: "", body: "", name: ""})
+  }
+
+  const handleUpdate = async (event) => {
+    // event.preventDefault()
+    let response = await axios.put(`http://localhost:3001/books/${id}`, formState)
+      .then ((response) => {
+        return response
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    console.log(response.data)
+    setBook([book, response.data])
+    setFormState({title: "", author: "", description: "", image: ""})
   }
 
   useEffect(() => {
@@ -46,13 +60,6 @@ const BookDetails = () => {
     navigate(`/`)
   }
 
-  const handleUpdate = async (event) => {
-    event.preventDefault()
-    let response = await axios.put(`http://localhost:3001/books/${id}`, formState)
-    console.log(response.data)
-    setBook([book, response.data])
-    setFormState({title: "", author: "", description: "", image: ""})
-  }
 
   return (
     <div className="book-details">
