@@ -31,7 +31,6 @@ const BookDetails = () => {
   }
 
   const handleUpdate = async (event) => {
-    // event.preventDefault()
     let response = await axios.put(`http://localhost:3001/books/${id}`, formState)
       .then ((response) => {
         return response
