@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Home = (props) => {
+const Home = () => {
   const [books, updateBooks] = useState([])
   const [formState, setFormState] = useState({ title: "", author: "", description: "", image: ""})
 
@@ -10,7 +10,7 @@ const Home = (props) => {
 
   useEffect(() => {
     const apiCall = async () => {
-      let response = await axios.get('http://localhost:3001/books')
+      let response = await axios.get('/books')
       updateBooks(response.data.allBooks)
     }
     apiCall()
@@ -26,7 +26,7 @@ const Home = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let newBook = await axios.post('http://localhost:3001/books', formState)
+    let newBook = await axios.post('/books', formState)
       .then((response) => {
         return response
       })

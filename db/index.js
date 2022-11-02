@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(
+    'mongodb+srv://marmaeju:butterfly1@generalassemblycluster.ivskyjp.mongodb.net/biasedReviewsDatabase'
+  )
   .then(() => {
     console.log('Successfully connected to MongoDB')
   })

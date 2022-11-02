@@ -18,7 +18,7 @@ const BookDetails = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let response = await axios.post(`http://localhost:3001/reviews/${id}`, formState)
+    let response = await axios.post(`/reviews/${id}`, formState)
       .then((response) => {
         return response
       })
@@ -31,7 +31,7 @@ const BookDetails = () => {
   }
 
   const handleUpdate = async (event) => {
-    let response = await axios.put(`http://localhost:3001/books/${id}`, formState)
+    let response = await axios.put(`/books/${id}`, formState)
       .then ((response) => {
         return response
       })
@@ -45,7 +45,7 @@ const BookDetails = () => {
 
   useEffect(() => {
     const getBook = async () => {
-      let response = await axios.get(`http://localhost:3001/books/${id}`)
+      let response = await axios.get(`/books/${id}`)
       setBook(response.data)
       setReviews(response.data.reviews)
     }
@@ -54,7 +54,7 @@ const BookDetails = () => {
 
   const deleteBook = async (event) => {
     event.preventDefault()
-    let response = await axios.delete(`http://localhost:3001/books/${id}`, formState)
+    let response = await axios.delete(`/books/${id}`, formState)
     setBook(response)
     navigate(`/`)
   }
