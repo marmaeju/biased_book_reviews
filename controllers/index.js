@@ -52,6 +52,7 @@ const deleteBook = async (req, res) => {
 }
 
 const createReview = async (req, res) => {
+  console.log(req.body)
   try {
     const newReview = await new Review(req.body)
     await newReview.save()

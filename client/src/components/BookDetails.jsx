@@ -18,15 +18,16 @@ const BookDetails = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let response = await axios.post(`/reviews/${id}`, formState)
+    console.log(formState)
+    let newReview = await axios.post(`/api/reviews`, formState)
       .then((response) => {
         return response
       })
       .catch((error) => {
         console.log(error)
       })
-      console.log(response)
-      setReviews([...reviews, response.data.newReview])
+      console.log(newReview)
+      setReviews([...reviews, newReview.data.newReview])
       setFormState({ title: "", body: "", name: ""})
   }
 
